@@ -1,0 +1,18 @@
+{
+    "name": "Redis Session Store",
+    "owner": "WSO2",
+    "category": "Session Management",
+    "documentationUrl": "https://github.com/wso2-extensions/identity-session-data-store-redis/blob/main/README.md",
+    "description": "A Redis backed session store for WSO2 Identity Server that replaces the relational session storage without any change to the Identity Server, improving performance and enabling horizontal scalability of session state.",
+    "status": "Active",
+    "labels": ["Performance"],
+    "releases": [
+        {
+            "tagName": "v1.0.0",
+            "products": [
+                "IS 7.2.0"
+            ],
+            "isHidden": true
+        }
+    ]
+}
