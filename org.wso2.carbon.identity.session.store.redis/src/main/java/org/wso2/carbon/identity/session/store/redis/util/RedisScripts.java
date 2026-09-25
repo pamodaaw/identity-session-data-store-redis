@@ -119,8 +119,8 @@ public class RedisScripts {
     /**
      * Records a federated mapping on the session it belongs to. The mapping is dropped when the session is not there.
      * <p>
-     * KEYS: session key. (<prefix>:s:<type>:<sid>)
-     * ARGV: federated field name. (f:<tenantId>:<idpId>:<idpSessionId>)
+     * KEYS: session key. ({@code <prefix>:s:<type>:<sid>})
+     * ARGV: federated field name. ({@code f:<tenantId>:<idpId>:<idpSessionId>})
      * Returns the remaining expiry of the session in milliseconds, and 0 when the session is not there or
      * carries no expiry of its own.
      */
@@ -236,7 +236,7 @@ public class RedisScripts {
     /**
      * Stores a federated authentication session mapping and its expiry in one operation.
      * <p>
-     * KEYS: mapping key. (<prefix>:fed:<tenantId>:<idpId>:<idpSessionId>)
+     * KEYS: mapping key. ({@code <prefix>:fed:<tenantId>:<idpId>:<idpSessionId>})
      * ARGV: expiry in milliseconds, then field and value pairs.
      */
     public static final String STORE_FEDERATED_MAPPING =
@@ -250,8 +250,8 @@ public class RedisScripts {
      * reverse index outlives every mapping it points at. A non-positive expiry is ignored rather than
      * applied, since it would delete the set and every member in it.
      * <p>
-     * KEYS: set key. (<prefix>:fed:idp:<idpSessionId>)
-     * ARGV: member(<tenantId>:<idpId>), expiry in milliseconds.
+     * KEYS: set key. ({@code <prefix>:fed:idp:<idpSessionId>})
+     * ARGV: member ({@code <tenantId>:<idpId>}), expiry in milliseconds.
      */
     public static final String ADD_SET_MEMBER =
             "redis.call('SADD', KEYS[1], ARGV[1]) "

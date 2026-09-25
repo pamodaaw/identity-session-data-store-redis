@@ -86,7 +86,7 @@ public class RedisKeyUtils {
 
     /**
      * Builds the key of the federated authentication session mappings of an identity provider session.
-     * Format: {@code <prefix>:fed:idp:<idpSessionId}}
+     * Format: {@code <prefix>:fed:idp:<idpSessionId>}
      *
      * @param idpSessionId Identity provider session index.
      * @return the key of the set used to look up federated mappings.
