@@ -106,7 +106,7 @@ public class RedisConnectionManagerTest {
                 .sentinelPassword("sentinel-secret")
                 .build());
 
-        assertEquals("sentinel-secret", new String(single.getSentinels().get(0).getPassword()));
+        assertEquals("sentinel-secret", passwordOf(single.getSentinels().get(0)));
 
         RedisURI several = RedisConnectionManager.buildSentinelUri(new RedisStoreConfig.Builder()
                 .mode(RedisConstants.MODE_SENTINEL)
@@ -116,8 +116,13 @@ public class RedisConnectionManagerTest {
                 .build());
 
         for (RedisURI sentinel : several.getSentinels()) {
-            assertEquals("sentinel-secret", new String(sentinel.getPassword()));
+            assertEquals("sentinel-secret", passwordOf(sentinel));
         }
+    }
+
+    private static String passwordOf(RedisURI uri) {
+
+        return new String(uri.getCredentialsProvider().resolveCredentials().block().getPassword());
     }
 
     @Test
